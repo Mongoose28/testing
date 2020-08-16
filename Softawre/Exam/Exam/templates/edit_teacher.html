@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1>Edit Teacher Info</h1>
+  <form method="POST" class="post-form" action="/update_teacher/{{teacher.pk}}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">ID:</label>
+            <div class="col-sm-4">
+                <input type="text" name="t_id" id="id_t_id" required maxlength="10" value="{{ teacher.t_id }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-4">
+                <input type="text" name="t_name" id="id_t_id" required maxlength="150" value="{{ teacher.t_name }}" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email:</label>
+            <div class="col-sm-4">
+                <input type="text" name="email" id="id_t_id" required maxlength="80" value="{{ teacher.email }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Department:</label>
+            <div class="col-sm-4">
+                <input type="text" name="dpt" id="id_t_id" required maxlength="50" value="{{ teacher.dpt }}" />
+            </div>
+        </div>
+
+
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+</form>
+{% endblock %}

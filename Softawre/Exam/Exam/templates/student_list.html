@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Student Info</h2>
+
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+          <th>Department</th>
+        <th>PhnNo</th>
+
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in student %}
+        <tr>
+          <td>{{ i.s_id }}</td>
+          <td>{{ i.name }}</td>
+          <td>{{ i.email }}</td>
+            <td>{{ i.dpt }}</td>
+          <td>{{ i.phn }}</td>
+
+
+
+
+          <td>
+            <form method="post" action="{% url 'edit_student' i.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-success btn-md">Edit</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'delete_student' i.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger btn-md">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
